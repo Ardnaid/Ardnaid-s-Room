@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Top Songs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Special Elite', monospace;
+background:#f6f6f6;
+
+}
+
+/* =========================
+SIDEBAR
+========================= */
+
+
+.sidebar{
+
+position:fixed;
+left:0;
+top:0;
+
+width:300px;
+height:100vh;
+
+display:flex;
+flex-direction:column;
+
+padding:20px;
+
+background:url("./music\ sidebar.png");
+background-size:cover;
+
+}
+
+
+.home-btn{
+
+margin-top:auto;
+
+display:block;
+
+width:100%;
+
+padding:12px;
+
+text-align:center;
+
+text-decoration:none;
+
+background:black;
+
+color:white;
+
+border-radius:30px;
+
+font-weight:bold;
+
+}
+
+.logo{
+
+width:100%;
+margin-bottom:25px;
+
+}
+
+.menu-btn{
+
+display:block;
+
+width:100%;
+
+padding:12px;
+
+margin-bottom:12px;
+
+text-align:center;
+
+text-decoration:none;
+
+background:white;
+
+color:black;
+
+border-radius:30px;
+
+font-weight:bold;
+
+}
+
+.active{
+
+background:#cf4040;
+color:white;
+
+}
+
+.note{
+
+margin-top:30px;
+
+background:white;
+
+padding:15px;
+
+text-align:center;
+
+line-height:1.5;
+
+border:2px solid black;
+
+}
+
+.note2{
+
+margin-top:20px;
+
+padding:20px;
+
+text-align:center;
+
+line-height:1;
+
+}
+
+
+.links{
+
+margin-top:5px;
+
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+justify-content:center;
+
+}
+
+.links a{
+
+text-decoration:none;
+
+background:black;
+
+color:white;
+
+padding:8px 12px;
+
+border-radius:20px;
+
+font-size:11px;
+text-align:center;
+
+
+}
+
+/* =========================
+MAIN
+========================= */
+
+.main{
+
+margin-left:300px;
+
+padding:40px;
+
+min-height:100vh;
+
+}
+
+.page-title{
+
+text-align:center;
+
+font-size:70px;
+
+margin-bottom:40px;
+
+}
+
+.song-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:25px;
+
+padding-bottom:100px;
+
+}
+
+.song-card{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:120px;
+
+background:white;
+
+border:3px solid black;
+
+text-decoration:none;
+
+color:black;
+
+font-size:22px;
+
+transition:.2s;
+
+}
+
+.song-card:hover{
+
+background:#cf4040;
+
+color:white;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+
+<a href="music-albums2.html" class="menu-btn">
+TOP ALBUM
+</a>
+
+<a href="music-song.html" class="menu-btn active">
+TOP SONG
+</a>
+
+<a href="music-artists.html" class="menu-btn">
+TOP ARTIST
+</a>
+
+<div class="note">
+
+My all time favorite songs, albums, and artists!
+Kalau mau tau lebih lanjut bisa cek
+
+        <a href="https://open.spotify.com/user/auooy5b6j18t136y1bdslbtiy?si=00daea0984ba496a"
+           target="_blank">
+
+            Spotify
+
+        </a>
+
+        or
+
+        <a href="https://music.youtube.com/@ardnaids?si=3ogMOPq92EUEcG0p"
+           target="_blank">
+
+            YT Music
+
+        </a>
+
+        gw!
+</div>
+
+<div class="note2">  
+Check this cool links for music discovery and stuff!
+</div>
+
+<div class="links">
+
+<a href="https://bandcamp.com/">BANDCAMP</a>
+<a href="https://rateyourmusic.com/">RYM</a>
+<a href="https://everynoise.com/engenremap.html">EVERY NOISE</a>
+<a href="https://musicmap.info/">MUSICMAP</a>
+<a href="https://gnosic.com/">GNOOSIC</a>
+
+</div>
+
+<br><br>
+<a href="index.html" class="home-btn">
+    RETURN HOME
+</a>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<h1 class="page-title">
+
+TOP SONG
+
+</h1>
+
+<div class="song-grid">
+
+    <a href="LINK"
+       target="_blank"
+       class="song-card">
+
+       Seabird
+
+    </a>
+
+    <a href="LINK"
+       target="_blank"
+       class="song-card">
+
+       Beloved
+
+    </a>
+
+    <a href="LINK"
+       target="_blank"
+       class="song-card">
+
+       No Ordinary Love
+
+    </a>
+
+    <a href="LINK"
+       target="_blank"
+       class="song-card">
+
+       Smooth Operator
+
+    </a>
+
+</div>
+
+</div>
+
+
+</body>
+</html>

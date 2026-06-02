@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Books | ardnaid's room</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Puppies+Play&family=Unkempt:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* =====================
+BODY
+===================== */
+
+body{
+    font-family:'Unkempt', cursive;
+    overflow:hidden;
+}
+
+/* =====================
+LAYOUT
+===================== */
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+/* =====================
+SIDEBAR
+===================== */
+
+.sidebar{
+
+    width:300px;
+    min-width:300px;
+
+    background:#4b1f24;
+
+    color:#f5eee8;
+
+    padding:30px;
+
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+
+    overflow-y:auto;
+}
+
+.page-title{
+
+    font-family:'Puppies Play', cursive;
+
+    font-size:6rem;
+
+    font-weight:400;
+
+    margin-bottom:15px;
+}
+
+.description{
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+}
+
+/* =====================
+SECTION
+===================== */
+
+.section{
+    margin-bottom:35px;
+}
+
+.section-title{
+
+    font-family:'unkempt', cursive;
+
+    font-size:1.3rem;
+
+    margin-bottom:10px;
+
+    color:#f7d9c8;
+}
+
+.filter-btn{
+
+    width:100%;
+
+    text-align:left;
+
+    margin-bottom:8px;
+
+    padding:10px 14px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    background:#603038;
+
+    color:#f5eee8;
+
+    cursor:pointer;
+
+    font-family:'Unkempt', cursive;
+
+    transition:.25s;
+}
+
+.filter-btn:hover{
+
+    background:#7c424d;
+}
+
+.filter-btn.active{
+
+    background:#d6b29b;
+
+    color:#4b1f24;
+}
+
+/* =====================
+HOME BUTTON
+===================== */
+
+.home-btn{
+
+    display:block;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    margin-top:25px;
+
+    padding:12px;
+
+    background:#f5eee8;
+
+    color:#4b1f24;
+
+    border-radius:8px;
+
+    font-weight:bold;
+}
+
+/* =====================
+BOOK AREA
+===================== */
+
+.content{
+
+    margin-left:300px;
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:40px;
+
+    background-color:#f4efe7;
+
+    background-image:
+        radial-gradient(
+            rgba(0,0,0,.15) 1px,
+            transparent 1px
+        );
+
+    background-size:28px 28px;
+}
+
+/* =====================
+GRID
+===================== */
+
+.book-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(5, 1fr);
+
+    gap:20px;
+}
+
+/* =====================
+BOOK CARD
+===================== */
+
+.book-card{
+
+    background:#fffaf4;
+
+    border:1px solid #d7c8b7;
+
+    box-shadow:
+    6px 6px 0px #4b1f24;
+
+    transition:.25s;
+}
+
+.book-card:hover{
+
+    transform:translateY(-5px);
+}
+
+.book-cover{
+
+    width:100%;
+
+    height:250px;
+
+    object-fit:cover;
+
+    background:#ece5dc;
+}
+
+.book-info{
+
+    padding:15px;
+}
+
+.book-title{
+
+    font-size:1.2rem;
+
+    margin-bottom:8px;
+}
+
+.book-author{
+
+    color:#7a5b55;
+
+    font-size:.9rem;
+
+    margin-bottom:12px;
+}
+
+/* =====================
+TAGS
+===================== */
+
+.tag{
+
+    display:inline-block;
+
+    padding:4px 8px;
+
+    margin-right:5px;
+
+    margin-top:5px;
+
+    font-size:.75rem;
+
+    background:#8a5660;
+
+    color:white;
+}
+
+.status{
+
+    background:#4b1f24;
+}
+
+/* =====================
+RESPONSIVE
+===================== */
+
+@media(max-width:900px){
+
+    body{
+        overflow:auto;
+    }
+
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+
+        position:relative;
+
+        width:100%;
+
+        min-width:100%;
+
+        height:auto;
+    }
+
+    .content{
+
+        margin-left:0;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <h1 class="page-title">Books</h1>
+
+        <p class="description">
+            Koleksi buku-buku gw,<br>
+            dimulai dari yang udah dibaca<br>
+            sampai yang belum dibaca
+        </p>
+
+        <!-- SHOW ALL -->
+
+        <div class="section">
+
+            <div class="section-title">
+                Show All
+            </div>
+
+            <button class="filter-btn"
+                    onclick="showAll()">
+                Everything
+            </button>
+
+        </div>
+
+        <!-- CATEGORY -->
+
+        <div class="section">
+
+            <div class="section-title">
+                Category
+            </div>
+
+            <button class="filter-btn"
+            onclick="filterCategory('fantasy')">
+            Fantasy
+            </button>
+
+            <button class="filter-btn"
+            onclick="filterCategory('romance')">
+            Romance
+            </button>
+
+            <button class="filter-btn"
+            onclick="filterCategory('Thriller')">
+            Thriller
+            </button>
+
+            <button class="filter-btn"
+            onclick="filterCategory('horror')">
+            Horror
+            </button>
+
+            <button class="filter-btn"
+            onclick="filterCategory('Mystery')">
+            Mystery
+            </button>
+
+            <button class="filter-btn"
+            onclick="filterCategory('self help')">
+            Self Help
+            </button>
+
+            <button class="filter-btn"
+            onclick="filterCategory('thriller')">
+            Thriller
+            </button>
+
+        </div>
+
+        <!-- SHELF -->
+
+        <div class="section">
+
+            <div class="section-title">
+                Shelf
+            </div>
+
+            <button class="filter-btn"
+            onclick="filterStatus('loved')">
+            Loved
+            </button>
+
+            <button class="filter-btn"
+            onclick="filterStatus('finished')">
+            Finished
+            </button>
+
+            <button class="filter-btn"
+            onclick="filterStatus('reading')">
+            Currently Reading
+            </button>
+
+            <button class="filter-btn"
+            onclick="filterStatus('tbr')">
+            Want To Read
+            </button>
+
+            <button class="filter-btn"
+            onclick="filterStatus('abandoned')">
+            Abandoned
+            </button>
+
+        </div>
+
+        <a href="index.html"
+           class="home-btn">
+           ← Return Home
+        </a>
+
+    </aside>
+
+    <!-- BOOKS -->
+
+    <main class="content">
+
+        <div class="book-grid">
+
+            <!-- BUMI -->
+
+            <div class="book-card"
+                 data-category="fantasy"
+                 data-status="finished">
+
+                <img class="book-cover"
+                src="./Bumi.png">
+
+                <div class="book-info">
+
+                    <div class="book-title">
+                        Bumi
+                    </div>
+
+                    <div class="book-author">
+                        Tere Liye
+                    </div>
+
+                    <span class="tag">
+                        Fantasy
+                    </span>
+
+                    <span class="tag status">
+                        Finished
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- BULAN -->
+
+            <div class="book-card"
+                 data-category="fantasy"
+                 data-status="finished">
+
+                <img class="book-cover"
+                src="./9786020332949_Bulan-New-Cover.jpg">
+
+                <div class="book-info">
+
+                    <div class="book-title">
+                        Bulan
+                    </div>
+
+                    <div class="book-author">
+                        Tere Liye
+                    </div>
+
+                    <span class="tag">
+                        Fantasy
+                    </span>
+
+                    <span class="tag status">
+                        Finished
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- BINTANG -->
+
+            <div class="book-card"
+                 data-category="fantasy"
+                 data-status="finished">
+
+                <img class="book-cover"
+                src="./bintang.jpg">
+
+                <div class="book-info">
+
+                    <div class="book-title">
+                        Bintang
+                    </div>
+
+                    <div class="book-author">
+                        Tere Liye
+                    </div>
+
+                    <span class="tag">
+                        Fantasy
+                    </span>
+
+                    <span class="tag status">
+                        Finished
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- KOMET -->
+
+            <div class="book-card"
+                 data-category="fantasy"
+                 data-status="finished">
+
+                <img class="book-cover"
+                src="./komet.jpg">
+
+                <div class="book-info">
+
+                    <div class="book-title">
+                        Komet
+                    </div>
+
+                    <div class="book-author">
+                        Tere Liye
+                    </div>
+
+                    <span class="tag">
+                        Fantasy
+                    </span>
+
+                    <span class="tag status">
+                        Finished
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- KOMET Minor -->
+
+            <div class="book-card"
+                 data-category="fantasy"
+                 data-status="finished">
+
+                <img class="book-cover"
+                src="./k.minor.jpg">
+
+                <div class="book-info">
+
+                    <div class="book-title">
+                        Komet Minor
+                    </div>
+
+                    <div class="book-author">
+                        Tere Liye
+                    </div>
+
+                    <span class="tag">
+                        Fantasy
+                    </span>
+
+                    <span class="tag status">
+                        Finished
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- THE POWER OF LANGUAGE -->
+
+            <div class="book-card"
+                 data-category="self help"
+                 data-status="currently reading">
+
+                <img class="book-cover"
+                src="./THE_POWER_OF_LANGUAGE.jpg">
+
+                <div class="book-info">
+
+                    <div class="book-title">
+                        The Power of Language
+                    </div>
+
+                    <div class="book-author">
+                        Shin Dohyun  & Yoon Naru
+                    </div>
+
+                    <span class="tag">
+                        Self Help
+                    </span>
+
+                    <span class="tag status">
+                        currently reading
+                    </span>
+
+                </div>
+
+            </div>
+
+                        <!-- THE GIRL ON THE TRAIN -->
+
+            <div class="book-card"
+                 data-category="Mystery Thriller"
+                 data-status="currently reading">
+
+                <img class="book-cover"
+                src="./22557272.jpg">
+
+                <div class="book-info">
+
+                    <div class="book-title">
+                        The Girl on the Train
+                    </div>
+
+                    <div class="book-author">
+                        Paula Hawkins
+                    </div>
+
+                    <span class="tag">
+                        Mystery
+                    </span>
+                    <span class="tag">
+                        Thriller
+                    </span>
+
+                    <span class="tag status">
+                        currently reading
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+function showAll(){
+
+    const books =
+    document.querySelectorAll('.book-card');
+
+    books.forEach(book => {
+        book.style.display = 'block';
+    });
+
+}
+
+function filterCategory(category){
+
+    const books =
+    document.querySelectorAll('.book-card');
+
+    books.forEach(book => {
+
+        if(book.dataset.category.includes(category)){
+
+            book.style.display = 'block';
+
+        }else{
+
+            book.style.display = 'none';
+
+        }
+
+    });
+
+}
+
+function filterStatus(status){
+
+    const books =
+    document.querySelectorAll('.book-card');
+
+    books.forEach(book => {
+
+        if(book.dataset.status === status){
+
+            book.style.display = 'block';
+
+        }else{
+
+            book.style.display = 'none';
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

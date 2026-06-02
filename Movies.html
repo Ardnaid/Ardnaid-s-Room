@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Movies | ardnaid's room</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Puppies+Play&family=Unkempt:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* =========================
+BODY
+========================= */
+
+body{
+    font-family:'Unkempt', cursive;
+    overflow:hidden;
+    color:#f5eee8;
+}
+
+/* =========================
+LAYOUT
+========================= */
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+/* =========================
+SIDEBAR
+========================= */
+
+.sidebar{
+
+    width:300px;
+    min-width:300px;
+
+    background:#f4efe7;
+
+    color:#4b1f24;
+
+    padding:30px;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+    bottom:0;
+
+    overflow-y:auto;
+
+    background-image:
+    radial-gradient(
+        rgba(0,0,0,.18) 1px,
+        transparent 1px
+    );
+
+    background-size:28px 28px;
+}
+
+.page-title{
+
+    font-family:'Puppies Play', cursive;
+
+    font-size:6rem;
+
+    font-weight:400;
+
+    margin-bottom:15px;
+}
+
+.description{
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+}
+
+/* =========================
+SECTION
+========================= */
+
+.section{
+    margin-bottom:35px;
+}
+
+.section-title{
+
+    font-family:'Unkempt', cursive;
+
+    font-size:1.3rem;
+
+    margin-bottom:10px;
+}
+
+.filter-btn{
+
+    width:100%;
+
+    padding:10px 14px;
+
+    margin-bottom:8px;
+
+    text-align:left;
+
+    border:1px solid rgba(75,31,36,.15);
+
+    background:#fffaf4;
+
+    color:#4b1f24;
+
+    cursor:pointer;
+
+    font-family:'Unkempt', cursive;
+
+    transition:.25s;
+}
+
+.filter-btn:hover{
+
+    background:#d9c2b3;
+}
+
+.home-btn{
+
+    display:block;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    margin-top:25px;
+
+    padding:12px;
+
+    background:#4b1f24;
+
+    color:#f5eee8;
+
+    border-radius:8px;
+}
+
+/* =========================
+MOVIE AREA
+========================= */
+
+.content{
+
+    margin-left:300px;
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:40px;
+
+    background:#4b1f24;
+
+    background-image:
+    radial-gradient(
+        rgba(255,255,255,.12) 2px,
+        transparent 2px
+    );
+
+    background-size:35px 35px;
+}
+
+/* =========================
+GRID
+========================= */
+
+.movie-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    gap:20px;
+}
+
+/* =========================
+CARD
+========================= */
+
+.movie-card{
+
+    background:#6d434a;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+    6px 6px 0px #2a0f12;
+
+    transition:.25s;
+}
+
+.movie-card:hover{
+
+    transform:translateY(-5px);
+}
+
+.movie-cover{
+
+    width:100%;
+
+    height:250px;
+
+    object-fit:cover;
+
+    display:block;
+
+    background:#87656b;
+}
+
+.movie-info{
+
+    padding:12px;
+}
+
+.movie-title{
+
+    font-size:1.25rem;
+
+    margin-bottom:8px;
+}
+
+.movie-year{
+
+    font-size:.8rem;
+
+    opacity:.75;
+
+    margin-bottom:10px;
+}
+
+.tag{
+
+    display:inline-block;
+
+    padding:4px 8px;
+
+    font-size:.75rem;
+
+    background:#f5eee8;
+
+    color:#4b1f24;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:1200px){
+
+    .movie-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+}
+
+@media(max-width:900px){
+
+    body{
+        overflow:auto;
+    }
+
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+
+        position:relative;
+
+        width:100%;
+
+        min-width:100%;
+
+        height:auto;
+    }
+
+    .content{
+        margin-left:0;
+    }
+
+    .movie-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <h1 class="page-title">
+            Movies
+        </h1>
+
+        <p class="description">
+            Kumpulan film & series favorit gw. 
+            Kalau mau lihat lebih lengkap, 
+            mampir aja ke Letterboxd gw yaa! 
+            <a href="https://boxd.it/ceqkD" target="_blank">My Letterboxd</a>
+        </p>
+
+        <!-- SHOW ALL -->
+
+        <div class="section">
+
+            <div class="section-title">
+                Show All
+            </div>
+
+            <button class="filter-btn"
+            onclick="showAll()">
+            Everything
+            </button>
+
+        </div>
+
+        <!-- TYPE -->
+
+        <div class="section">
+
+            <div class="section-title">
+                Type
+            </div>
+
+            <button class="filter-btn"
+            onclick="filterType('movie')">
+            Movies
+            </button>
+
+            <button class="filter-btn"
+            onclick="filterType('series')">
+            Series
+            </button>
+
+        </div>
+
+        <a href="index.html"
+           class="home-btn">
+           ← Return Home
+        </a>
+
+    </aside>
+
+    <!-- MOVIES -->
+
+    <main class="content">
+
+        <div class="movie-grid">
+
+            <!-- LA LA LAND -->
+
+            <div class="movie-card"
+            data-type="movie">
+
+                <img class="movie-cover"
+                src="https://via.placeholder.com/300x450?text=LA+LA+LAND">
+
+                <div class="movie-info">
+
+                    <div class="movie-title">
+                        La La Land
+                    </div>
+
+                    <div class="movie-year">
+                        2016
+                    </div>
+
+                    <span class="tag">
+                        Movie
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- LITTLE WOMEN -->
+
+            <div class="movie-card"
+            data-type="movie">
+
+                <img class="movie-cover"
+                src="https://via.placeholder.com/300x450?text=LITTLE+WOMEN">
+
+                <div class="movie-info">
+
+                    <div class="movie-title">
+                        Little Women
+                    </div>
+
+                    <div class="movie-year">
+                        2019
+                    </div>
+
+                    <span class="tag">
+                        Movie
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- GILMORE GIRLS -->
+
+            <div class="movie-card"
+            data-type="series">
+
+                <img class="movie-cover"
+                src="https://via.placeholder.com/300x450?text=GILMORE+GIRLS">
+
+                <div class="movie-info">
+
+                    <div class="movie-title">
+                        Gilmore Girls
+                    </div>
+
+                    <div class="movie-year">
+                        2000
+                    </div>
+
+                    <span class="tag">
+                        Series
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- FLEABAG -->
+
+            <div class="movie-card"
+            data-type="series">
+
+                <img class="movie-cover"
+                src="https://via.placeholder.com/300x450?text=FLEABAG">
+
+                <div class="movie-info">
+
+                    <div class="movie-title">
+                        Fleabag
+                    </div>
+
+                    <div class="movie-year">
+                        2016
+                    </div>
+
+                    <span class="tag">
+                        Series
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- PRIDE & PREJUDICE -->
+
+            <div class="movie-card"
+            data-type="movie">
+
+                <img class="movie-cover"
+                src="https://via.placeholder.com/300x450?text=PRIDE+AND+PREJUDICE">
+
+                <div class="movie-info">
+
+                    <div class="movie-title">
+                        Pride & Prejudice
+                    </div>
+
+                    <div class="movie-year">
+                        2005
+                    </div>
+
+                    <span class="tag">
+                        Movie
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- BROOKLYN 99 -->
+
+            <div class="movie-card"
+            data-type="series">
+
+                <img class="movie-cover"
+                src="https://via.placeholder.com/300x450?text=BROOKLYN+99">
+
+                <div class="movie-info">
+
+                    <div class="movie-title">
+                        Brooklyn Nine-Nine
+                    </div>
+
+                    <div class="movie-year">
+                        2013
+                    </div>
+
+                    <span class="tag">
+                        Series
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+function showAll(){
+
+    const cards =
+    document.querySelectorAll('.movie-card');
+
+    cards.forEach(card => {
+
+        card.style.display = 'block';
+
+    });
+
+}
+
+function filterType(type){
+
+    const cards =
+    document.querySelectorAll('.movie-card');
+
+    cards.forEach(card => {
+
+        if(card.dataset.type === type){
+
+            card.style.display = 'block';
+
+        }
+
+        else{
+
+            card.style.display = 'none';
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

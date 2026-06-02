@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Top Albums</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Special Elite', monospace;
+background:#f6f6f6;
+
+}
+
+/* =========================
+SIDEBAR
+========================= */
+
+
+.sidebar{
+
+position:fixed;
+left:0;
+top:0;
+
+width:300px;
+height:100vh;
+
+display:flex;
+flex-direction:column;
+
+padding:20px;
+
+background:url("./music\ sidebar.png");
+background-size:cover;
+
+}
+
+
+.home-btn{
+
+margin-top:auto;
+
+display:block;
+
+width:100%;
+
+padding:12px;
+
+text-align:center;
+
+text-decoration:none;
+
+background:black;
+
+color:white;
+
+border-radius:30px;
+
+font-weight:bold;
+
+}
+
+.logo{
+
+width:100%;
+margin-bottom:25px;
+
+}
+
+.menu-btn{
+
+display:block;
+
+width:100%;
+
+padding:12px;
+
+margin-bottom:12px;
+
+text-align:center;
+
+text-decoration:none;
+
+background:white;
+
+color:black;
+
+border-radius:30px;
+
+font-weight:bold;
+
+}
+
+.active{
+
+background:#cf4040;
+color:white;
+
+}
+
+.note{
+
+margin-top:30px;
+
+background:white;
+
+padding:15px;
+
+text-align:center;
+
+line-height:1.5;
+
+border:2px solid black;
+
+}
+
+.note2{
+
+margin-top:20px;
+
+padding:20px;
+
+text-align:center;
+
+line-height:1;
+
+}
+
+
+.links{
+
+margin-top:5px;
+
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+justify-content:center;
+
+}
+
+.links a{
+
+text-decoration:none;
+
+background:black;
+
+color:white;
+
+padding:8px 12px;
+
+border-radius:20px;
+
+font-size:11px;
+text-align:center;
+
+
+}
+
+/* =========================
+MAIN
+========================= */
+
+.main{
+
+margin-left:300px;
+
+padding:40px;
+
+min-height:100vh;
+
+}
+
+/* TITLE */
+
+.album-title{
+
+text-align:center;
+
+font-size:72px;
+
+margin-bottom:40px;
+
+font-weight:bold;
+
+}
+
+/* TOP SECTION */
+
+.album-top{
+
+display:flex;
+
+justify-content:center;
+
+align-items:flex-start;
+
+gap:70px;
+
+}
+
+/* COVER */
+
+.album-cover{
+
+width:550px;
+
+display:block;
+
+}
+
+/* RIGHT SIDE */
+
+.album-info{
+
+width:350px;
+
+padding-top:30px;
+
+}
+
+.album-meta{
+
+font-size:25px;
+
+line-height:1.8;
+
+margin-bottom:30px;
+
+}
+
+.track-title{
+
+font-size:27px;
+
+margin-bottom:20px;
+
+}
+
+.tracklist{
+
+font-size:22px;
+
+line-height:1.8;
+
+}
+
+/* REVIEW */
+
+.review-section{
+
+margin-top:60px;
+
+text-align:center;
+
+max-width:900px;
+
+margin-left:auto;
+margin-right:auto;
+
+}
+
+.review{
+
+font-size:22px;
+
+line-height:2;
+
+margin-bottom:40px;
+
+}
+
+/* LISTEN */
+
+.listen-btn{
+
+display:inline-block;
+
+background:#cf4040;
+
+color:white;
+
+text-decoration:none;
+
+padding:20px 50px;
+
+border-radius:40px;
+
+font-size:22px;
+
+}
+
+/* NAV */
+
+.nav{
+
+margin-top:50px;
+
+display:flex;
+
+justify-content:space-between;
+
+padding:0 100px;
+
+}
+
+.nav button{
+
+width:70px;
+height:70px;
+
+border:none;
+
+border-radius:50%;
+
+font-size:32px;
+
+cursor:pointer;
+
+background:#d7d7d7;
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+
+.album-top{
+
+flex-direction:column;
+align-items:center;
+
+}
+
+.album-info{
+
+width:100%;
+max-width:600px;
+
+}
+
+.album-cover{
+
+width:80%;
+
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+
+<a href="music-albums2.html" class="menu-btn active">
+TOP ALBUM
+</a>
+
+<a href="music-song.html" class="menu-btn">
+TOP SONG
+</a>
+
+<a href="music-artists.html" class="menu-btn">
+TOP ARTIST
+</a>
+
+<div class="note">
+
+My all time favorite songs, albums, and artists!
+Kalau mau tau lebih lanjut bisa cek
+
+        <a href="https://open.spotify.com/user/auooy5b6j18t136y1bdslbtiy?si=00daea0984ba496a"
+           target="_blank">
+
+            Spotify
+
+        </a>
+
+        or
+
+        <a href="https://music.youtube.com/@ardnaids?si=3ogMOPq92EUEcG0p"
+           target="_blank">
+
+            YT Music
+
+        </a>
+
+        gw!
+</div>
+
+<div class="note2">  
+Check this cool links for music discovery and stuff!
+</div>
+
+<div class="links">
+
+<a href="https://bandcamp.com/">BANDCAMP</a>
+<a href="https://rateyourmusic.com/">RYM</a>
+<a href="https://everynoise.com/engenremap.html">EVERY NOISE</a>
+<a href="https://musicmap.info/">MUSICMAP</a>
+<a href="https://gnosic.com/">GNOOSIC</a>
+
+</div>
+
+<br><br>
+<a href="index.html" class="home-btn">
+    RETURN HOME
+</a>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<h1 id="title" class="album-title">
+Minisode 2: Thursday's Child
+</h1>
+
+<div class="album-top">
+
+<img
+id="cover"
+class="album-cover"
+src="./cdtxtalbum.png">
+
+<div class="album-info">
+
+<div class="album-meta">
+
+<strong>Year :</strong>
+<span id="year">2022</span>
+
+<br>
+
+<strong>Artist :</strong>
+<span id="artist">
+Tomorrow X Together
+</span>
+
+</div>
+
+<div class="track-title">
+<strong>Track:</strong>
+</div>
+
+<div
+id="tracks"
+class="tracklist">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="review-section">
+
+<div
+id="review"
+class="review">
+
+This album is so special to me.
+
+</div>
+
+<a
+id="listen"
+class="listen-btn"
+target="_blank">
+
+CLICK HERE TO LISTEN
+
+</a>
+
+</div>
+
+<div class="nav">
+
+<button onclick="prevAlbum()">
+←
+</button>
+
+<button onclick="nextAlbum()">
+→
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const albums = [
+
+{
+
+title:"Minisode 2: Thursday's Child",
+
+artist:"Tomorrow X Together",
+
+year:"2022",
+
+cover:"./cdtxtalbum.png",
+
+review:"This album hold memories of my 17th birthday and stressful UTBK era WKWKW. I remember listening to this album on repeat while doing my UTBK preparation. The whole songs in this album are sooo good!! Especially TCHFTG!! You know what? This album feels special bcs I'm a Thursday's child myself hehe.",
+
+tracks:[
+
+"Opening Sequence",
+"Good Boy Gone Bad",
+"Trust Fund Baby",
+"Lonely Boy (네 번째 손가락 위 타투)",
+"Thursday's Child Has Far To Go"
+
+],
+
+link:"https://music.youtube.com/playlist?list=OLAK5uy_k8ojJBpyYmk2rlyymn-8Vwn4zrGbIsHRg&si=1Jx_1NwT9-ZIh091"
+
+},
+
+{
+
+title:"Color Outside The Lines",
+
+artist:"CORTIS",
+
+year:"2025",
+
+cover:"./cdcortisalbum.png",
+
+review:"Salah satu album debut K-pop ter best sihh menurut gww. Tiap dengerin lagu di album ini rasanya jadi kayak teenager lagi wkwk, suka banget deh pokoknya. Dimulai dari lirik sampe konsep dari album ini tuh berasa nyatu banget sama member nya, jadi kerasa lebih apa yaa?? hmm lebih genuine dan fresh gitu dehh. POKOKNYA JOYRIDE FOR LYFE!!!!",
+
+tracks:[
+
+"GO!",
+"What You Want",
+"FaSHioN",
+"Joyride",
+"Lullaby"
+
+],
+
+link:"https://music.youtube.com/playlist?list=OLAK5uy_mLwZqYXn0ksDpyO8I6_jmMoHucqek6QqU&si=D605yo3Bjw9y8LJR"
+
+},
+
+{
+
+title:"Love Deluxe",
+
+artist:"Sade",
+
+year:"1922",
+
+cover:"./cdsadealbum.png",
+
+review:"I meann-- Do I even need to explain whyy??!?! The smooth jazz vibes and the soulful vocals ooouufff... Absolute masterpiece! This entire album is in my bathroom playlist btw.",
+
+tracks:[
+
+"No Ordinary Love",
+"Feel No Pain",
+"I Couldn't Love You More",
+"like a tattoo",
+"Kiss of Life",
+"Cherish the Day",
+"Pearls",
+"Bullet Proof Soul",
+"Mermaid"
+
+],
+
+link:"https://music.youtube.com/playlist?list=OLAK5uy_mn-MpwVjDlA228kMT2lHhVCRt98EUqkPQ&si=mcgmay0E-hcRbZxP"
+
+}
+
+];
+
+let current = 0;
+
+function renderAlbum(){
+
+document.getElementById("title").innerText =
+albums[current].title;
+
+document.getElementById("artist").innerText =
+albums[current].artist;
+
+document.getElementById("year").innerText =
+albums[current].year;
+
+document.getElementById("cover").src =
+albums[current].cover;
+
+document.getElementById("review").innerText =
+albums[current].review;
+
+document.getElementById("listen").href =
+albums[current].link;
+
+let trackHTML="";
+
+albums[current].tracks.forEach(track=>{
+
+trackHTML += track + "<br>";
+
+});
+
+document.getElementById("tracks").innerHTML =
+trackHTML;
+
+}
+
+function nextAlbum(){
+
+current++;
+
+if(current>=albums.length){
+
+current=0;
+
+}
+
+renderAlbum();
+
+}
+
+function prevAlbum(){
+
+current--;
+
+if(current<0){
+
+current=albums.length-1;
+
+}
+
+renderAlbum();
+
+}
+
+renderAlbum();
+
+</script>
+
+</body>
+</html>
